@@ -1,0 +1,57 @@
+<mat-toolbar color='primary' class="mat-toolbar mat-primary mat-toolbar-multiple-rows">
+    <mat-toolbar-row >
+        <span>Image Gallery</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="second-toolbar-row">
+        <div class="gallery-actions">
+            <button mat-raised-button color="Accent" aria-label="Slide Show" (click)="onSlideShowClicked()">
+                Slide Show
+            </button>
+            <mat-form-field  *ngIf="sorting">
+                <mat-label>Sort By</mat-label>
+                <mat-select (selectionChange)="onSortOptionChange($event)">
+                    <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+                    {{option.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="search">
+                <input type="text"
+                        placeholder="Search Image"
+                        aria-label="Number"
+                        matInput
+                        [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" 
+                    [displayWith]="getOptionText">
+                    <mat-option *ngFor="let image of filteredImages | async" [value]="image">
+                        {{image.title}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button class="close" mat-button color="black" (click)="onDeleteSearchClick()">X</button>
+            </mat-form-field>
+        </div>
+
+        <mat-paginator *ngIf="pagination" class="my-paginator" color="primary" 
+            [length]="filteredImagesArray.length"
+            [pageSize]="resultsPerPage"
+            [pageIndex]="currentPage"
+            [pageSizeOptions]="resultsPerPageOptions"
+            (page)="handlePage($event)">
+        </mat-paginator>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div class="gallery">
+    <mat-grid-list cols="4" rowHeight="3:2">
+        <div *ngFor="let image of imagesShowArray">
+            <mat-grid-tile>
+                <button class="close" mat-button mat-raised-button color="black" (click)="onDeleteImageClick(image)">X</button>
+                <img [src]="image.url" onerror="this.src='./assets/images/placeholder.png';" 
+                        [alt]="image.title" class="img-gallery" width="200px" height="200px"
+                        (click)="onImageClicked(image)">
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

@@ -1,0 +1,40 @@
+.dialog-wrapper {
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    align-content: space-between;
+
+}
+.dialog-wrapper > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+.img {
+    display: block;
+    width: 80%;
+    height: 60vh; 
+    margin-left: auto;
+    margin-right: auto;
+}
+.mat-dialog-content{
+    display: block;
+    justify-content: center;
+    height: 70%;
+    width: 80%;
+}
+
+.mat-dialog-actions{
+    justify-content: center;
+}
+  
+.close.mat-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  }

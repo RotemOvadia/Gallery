@@ -1,0 +1,28 @@
+.img-gallery{      
+    margin:6px 6px;      
+    cursor: pointer;
+    display:inline; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+}
+
+.gallery-actions{
+    justify-content: space-between;
+
+}
+
+.my-paginator{
+    align-self: flex-end;
+}
+.second-toolbar-row{
+    justify-content: space-between;
+}
+.close.mat-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  }

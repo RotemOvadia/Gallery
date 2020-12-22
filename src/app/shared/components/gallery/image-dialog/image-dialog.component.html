@@ -1,0 +1,13 @@
+<div class="dialog-wrapper">
+    <h1 mat-dialog-title>Hi {{data.image.title}}</h1>
+    <button class="close" mat-button color="black" (click)="onCloseClick()">X</button>
+
+    <div mat-dialog-content>
+        <img [src]="data.image.url" onerror="this.src='./assets/images/placeholder.png';" 
+                    [alt]="data.image.title" class="img" width="360" height="360" >
+    </div>
+    <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onPrevClick()">Prev</button>
+    <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
+    </div>
+</div>
