@@ -54,7 +54,7 @@ export class GalleryComponent implements OnInit {
         this.createImages(this.feedPath);
       }
       else if (typeof this.feedPath === 'string') {
-        let headers = new HttpHeaders ;
+        let headers = new HttpHeaders();
         headers = headers.set('Access-Control-Allow-Origin', '*');
         this.http.get(this.feedPath,{ 'headers': headers }).subscribe((imagesData:Array<any>) => 
         this.createImages(imagesData));

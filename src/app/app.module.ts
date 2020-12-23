@@ -17,6 +17,9 @@ import { ImageDialogComponent } from './shared/components/gallery/image-dialog/i
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
    // { provide: LOCAL_STORAGE, useExisting: LOCAL_STORAGE }

@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'image-gallery';
   url2 = 'http://assets.loris.ai/home-assignment-gallery-feed.json';
-  url = 'http://localhost:4200/assets/home-assignment-gallery-feed.json';
+  urlLocal = 'http://localhost:4200/assets/home-assignment-gallery-feed.json';
+  url = 'http://localhost:3000/pictures';
 
 }
