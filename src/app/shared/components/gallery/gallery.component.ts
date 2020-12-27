@@ -57,11 +57,15 @@ export class GalleryComponent implements OnInit {
       }
       else if (typeof this.feedPath === 'string') {
         let headers = new HttpHeaders();
-        headers = headers.set('Access-Control-Allow-Origin', '*');
-        this.http.get(this.feedPath,{ 'headers': headers }).subscribe((imagesData:Array<any>) => 
-        this.createImages(imagesData));
+        // headers = headers.set('Access-Control-Allow-Origin', '*');
+        // this.http.get(this.feedPath,{ 'headers': headers }).subscribe((imagesData:Array<any>) => 
+        // this.createImages(imagesData));
 
         this.socket.emit("getImages");
+        this.socket.fromEvent<any[]>('images');
+        this.socket.on('images', (imagesData:Array<any>) => {
+          this.createImages(imagesData);
+        });
       }
       //this.filteredImages = this.myControl.valueChanges{}
 
