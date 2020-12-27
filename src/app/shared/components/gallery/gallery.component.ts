@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from './image-dialog/image-dialog.component';
 import { LOCAL_STORAGE } from 'ngx-webstorage-service';
 import { StorageService } from 'ngx-webstorage-service/src/storage.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-gallery',
@@ -46,7 +47,8 @@ export class GalleryComponent implements OnInit {
   
   constructor(private http: HttpClient, 
     public dialog: MatDialog,
-    @Inject(LOCAL_STORAGE) private storage: StorageService
+    @Inject(LOCAL_STORAGE) private storage: StorageService,
+    private socket: Socket
     ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,8 @@ export class GalleryComponent implements OnInit {
         headers = headers.set('Access-Control-Allow-Origin', '*');
         this.http.get(this.feedPath,{ 'headers': headers }).subscribe((imagesData:Array<any>) => 
         this.createImages(imagesData));
+
+        this.socket.emit("getImages");
       }
       //this.filteredImages = this.myControl.valueChanges{}
 
